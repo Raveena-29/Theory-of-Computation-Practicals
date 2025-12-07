@@ -1,0 +1,83 @@
+#include <iostream>
+using namespace std;
+
+void state1(string w, int i);
+void state2(string w, int i);
+void state3(string w, int i);
+void state4(string w, int i);
+
+void state1(string w, int i)
+{
+    cout << "State: state 1" << endl;
+    if (i == w.length())
+    {
+        cout << "String Rejected" << endl;
+        return;
+    }
+
+    if (w[i] == '0')
+    {
+        state1(w, i + 1);
+    }
+    else
+    {
+        state2(w, i + 1);
+    }
+}
+void state2(string w, int i)
+{
+    cout << "State: state 2" << endl;
+    if (i == w.length())
+    {
+        cout << "string Rejected" << endl;
+        return;
+    }
+    if (w[i] == '0')
+    {
+        state1(w, i + 1);
+    }
+    else
+    {
+        state3(w, i + 1);
+    }
+}
+void state3(string w, int i)
+{
+    cout << "State: state 3" << endl;
+    if (i == w.length())
+    {
+        cout << "string Rejected" << endl;
+        return;
+    }
+    if (w[i] == '0')
+    {
+        state1(w, i + 1);
+    }
+    else
+    {
+        state4(w, i + 1);
+    }
+}
+void state4(string w, int i)
+{
+    cout << "State: state 4" << endl;
+    if (i == w.length())
+    {
+        cout << "string Accepted" << endl;
+        return;
+    }
+
+    // state 4 loops on both 0 and 1
+
+    state4(w, i + 1);
+}
+
+int main()
+{
+    string w;
+    cout << "Enter string : ";
+    cin >> w;
+
+    state1(w, 0);
+    return 0;
+}

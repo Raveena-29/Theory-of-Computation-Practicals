@@ -1,0 +1,98 @@
+#include <iostream>
+using namespace std;
+
+void state1(string w, int i);
+void state2(string w, int i);
+void state3(string w, int i);
+void state4(string w, int i);
+void state5(string w, int i);
+
+void state1(string w, int i)
+{
+    cout << "State: State 1 AND i = " << i << " : char = " << w[i] << endl;
+    if (i == w.length())
+    {
+        cout << "STRING REJECTED" << endl;
+        return;
+    }
+    if (w[i] == '0')
+    {
+        state1(w, i + 1);
+    }
+    else
+    {
+        state2(w, i + 1);
+    }
+}
+void state2(string w, int i)
+{
+    cout << "State: State 2 AND i = " << i << " : char = " << w[i] << endl;
+    if (i == w.length())
+    {
+        cout << "STRING REJECTED" << endl;
+        return;
+    }
+    if (w[i] == '0')
+    {
+        state2(w, i + 1);
+    }
+    else
+    {
+        state3(w, i + 1);
+    }
+}
+
+void state3(string w, int i)
+{
+    cout << "State: State 3 AND i = " << i << " : char = " << w[i] << endl;
+    if (i == w.length())
+    {
+        cout << "STRING ACCEPTED" << endl;
+        return;
+    }
+    if (w[i] == '0')
+    {
+        state3(w, i + 1);
+    }
+    else
+    {
+        state4(w, i + 1);
+    }
+}
+void state4(string w, int i)
+{
+    cout << "State: State 4 AND i = " << i << " : char = " << w[i] << endl;
+    if (i == w.length())
+    {
+        cout << "STRING ACCEPTED" << endl;
+        return;
+    }
+    if (w[i] == '0')
+    {
+        state4(w, i + 1);
+    }
+    else
+    {
+        state5(w, i + 1);
+    }
+}
+void state5(string w, int i)
+{
+    cout << "State: State 5 AND i = " << i << " : char = " << w[i] << endl;
+    if (i == w.length())
+    {
+        cout << "STRING REJECTED" << endl;
+        return;
+    }
+    state5(w, i + 1);
+}
+
+int main()
+{
+    string w;
+    cout << "ENTER STRING : ";
+    cin >> w;
+
+    state1(w, 0);
+    return 0;
+}

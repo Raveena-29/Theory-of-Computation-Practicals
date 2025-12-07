@@ -1,0 +1,31 @@
+#include <iostream>
+using namespace std;
+
+bool state(string w)
+{
+    if (w.length() < 4)
+    {
+        return false;
+    }
+
+    string firstTwo = w.substr(0, 2);
+    string lastTwo = w.substr(w.length() - 2, 2);
+
+    return (firstTwo == lastTwo);
+}
+int main()
+{
+    string w;
+    cout << "ENTER A LANGUAGE OVER {a,b} ";
+    cin >> w;
+
+    if (state(w))
+    {
+        cout << "ACCEPTED: String belongs to L1" << endl;
+    }
+    else
+    {
+        cout << "REJECTED: String doesn't belongs to L2" << endl;
+    }
+    return 0;
+}
